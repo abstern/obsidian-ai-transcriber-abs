@@ -114,14 +114,18 @@ export default class SettingsTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName('Prompt')
 			.setDesc('What system prompt to use')
-			.addText(text => text
-				.setPlaceholder('Transcribe this audio. If the language is Chinese, please use Simplified Chinese characters. Provide only the direct transcription text without any introductory phrases.')
-				.setValue(this.plugin.settings.transcriber.transcriberPrompt)
-				.onChange(async (value) => {
-					this.plugin.settings.transcriber.transcriberPrompt = value;
-					await this.plugin.saveSettings();
-				})
-			);
+			.addTextArea(textArea => {
+				textArea
+					.setPlaceholder('Transcribe this audio. If the language is Chinese, please use Simplified Chinese characters. Provide only the direct transcription text without any introductory phrases.')
+					.setValue(this.plugin.settings.transcriber.transcriberPrompt)
+					.onChange(async (value) => {					
+						this.plugin.settings.transcriber.transcriberPrompt = value;
+						await this.plugin.saveSettings();
+					});
+					textArea.inputEl.rows = 10;
+					textArea.inputEl.style.width = '100%';
+					textArea.inputEl.style.minHeight = '150px';
+		});
 		new Setting(containerEl)
 			.setName('Max Concurrent Requests')
 			.setDesc('Maximum number of audio chunks to transcribe in parallel (minimum 1).')
