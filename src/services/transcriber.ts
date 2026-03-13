@@ -161,7 +161,7 @@ export class TranscriberService {
 						contents: [
 							{
 								parts: [
-									{ text: "Transcribe this audio. If the language is Chinese, please use Simplified Chinese characters. Provide only the direct transcription text without any introductory phrases." },
+									{ text: settings.transcriberPrompt },
 									{ 
 										inlineData: { 
 											mimeType: 'audio/wav', 
