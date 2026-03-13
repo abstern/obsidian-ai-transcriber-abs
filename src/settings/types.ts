@@ -5,6 +5,7 @@ export interface TranscriberSettings {
 	audioDir: string;
 	transcriptDir: string;
 	concurrencyLimit: number;
+	transcriberPrompt: string;
 }
 
 export interface SystemPromptTemplate {
@@ -37,6 +38,7 @@ export const DEFAULT_SETTINGS: PluginSettings = {
 		audioDir: '',
 		transcriptDir: '',
 		concurrencyLimit: 6,
+		transcriberPrompt: 'Transcribe this audio. If the language is Chinese, please use Simplified Chinese characters. Provide only the direct transcription text without any introductory phrases.'
 	},
 	editor: {
 		enabled: true,
